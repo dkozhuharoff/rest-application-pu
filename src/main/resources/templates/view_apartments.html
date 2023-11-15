@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Електронен домоуправител</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Електронен домоуправител">
+    <meta name="keywords" content="електронен домоуправител, професионална, дейност, поддръжка, етажна, собственост фирми, служители, многофамилни, сгради, живущи">
+    <meta name="author" content="Daniel Kozhuharov">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js"></script>
+</head>
+<body>
+<div class="content">
+    <div th:insert="fragments/menu"></div>
+    <div class="container">
+        <div class="box-1">
+            <div class="box-headline"><h2>Apartments</h2></div>
+            <table border="1" cellpadding="10">
+                <thead>
+                <tr></tr>
+                <tr>
+                    <th><a th:href="@{'/buildings/all/delete'}"><button>Delete all</button></a></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Number</th>
+                    <th>Area</th>
+                    <th>Floor</th>
+                    <th>Holder</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="apartment : ${apartments}">
+                    <td th:text="${apartment.id}"></td>
+                    <td th:text="${apartment.number}"></td>
+                    <td th:text="${apartment.area}"></td>
+                    <td th:text="${apartment.floor}"></td>
+                    <td th:text="${apartment.apartmentHolder} ? ${apartment.apartmentHolder.name} : 'The apartment is ready for sale.'"></td>
+                    <td th:switch="${apartment.sold}">
+                        <a th:case="false" th:href="@{'/apartments/' + ${apartment.id} + '/buy'}"><button>Buy apartment</button></a>
+                        <a th:case="true" th:href="@{'/apartments/' + ${apartment.id} + '/remove_holder'}"><button>Sold apartment</button></a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/apartments/' + ${apartment.id}}"><button>View</button></a>
+                        <a th:href="@{'/apartments/' + ${apartment.id} + '/update'}"><button>Edit</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

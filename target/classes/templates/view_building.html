@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Електронен домоуправител</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Електронен домоуправител">
+    <meta name="keywords" content="електронен домоуправител, професионална, дейност, поддръжка, етажна, собственост фирми, служители, многофамилни, сгради, живущи">
+    <meta name="author" content="Daniel Kozhuharov">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/javascript" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <script src="/scripts.js"></script>
+</head>
+<body>
+<div class="content">
+    <div th:insert="fragments/menu"></div>
+    <div class="container">
+        <div class="box-1">
+            <div class="box-headline"><h2>Update building</h2></div>
+            <div th:object="${building}">
+                <h2>ID:</h2>
+                <h3 th:text="*{id}"></h3>
+                <h2>Address:</h2>
+                <h3 th:text="*{address}"></h3>
+                <h2>Floors number:</h2>
+                <h3 th:text="*{floorsNumber}"></h3>
+                <h2>Apartments number:</h2>
+                <h3 th:text="*{apartmentsNumber}"></h3>
+                <h2>Area:</h2>
+                <h3 th:text="*{area}"></h3>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

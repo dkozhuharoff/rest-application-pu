@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Електронен домоуправител</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Електронен домоуправител">
+    <meta name="keywords" content="електронен домоуправител, професионална, дейност, поддръжка, етажна, собственост фирми, служители, многофамилни, сгради, живущи">
+    <meta name="author" content="Daniel Kozhuharov">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js"></script>
+</head>
+<body>
+<div class="content">
+    <div th:insert="fragments/menu"></div>
+    <div class="container">
+        <div class="box-1">
+            <div class="box-headline"><h2>Create building</h2></div>
+            <form action="#" th:action="@{/buildings}" th:object="${building}"
+                  method="post">
+                <p>
+                    <label>Enter address</label>
+                    <input type="text" class="inputform" th:field="*{address}"/>
+                </p>
+                <p>
+                    <label>Enter number of floors</label>
+                    <input type="text" class="inputform" th:field="*{floorsNumber}" />
+                </p>
+                <p>
+                    <label>Enter number of apartments</label>
+                    <input type="text" class="inputform" th:field="*{apartmentsNumber}" />
+                </p>
+                <p>
+                    <label>Enter area</label>
+                    <input type="text" class="inputform" th:field="*{area}" />
+                </p>
+                <button type="submit" >Create building</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Електронен домоуправител</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Електронен домоуправител">
+    <meta name="keywords" content="електронен домоуправител, професионална, дейност, поддръжка, етажна, собственост фирми, служители, многофамилни, сгради, живущи">
+    <meta name="author" content="Daniel Kozhuharov">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/scripts.js"></script>
+</head>
+<body>
+<div class="content">
+    <div th:insert="fragments/menu"></div>
+    <div class="container">
+        <div class="box-1">
+            <div class="box-headline"><h2>Companies</h2></div>
+            <table border="1" cellpadding="10">
+                <thead>
+                <tr></tr>
+                <tr>
+                    <th><a th:href="@{'/companies/all/delete'}"><button>Delete all</button></a></th>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Employees</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="company : ${companies}">
+                    <td th:text="${company.id}"></td>
+                    <td th:text="${company.name}"></td>
+                    <td>
+                        <a th:href="@{'/companies/' + ${company.id} + '/employees'}"><button>View employees</button></a>
+                        <a th:href="@{'/companies/' + ${company.id} + '/add_employee'}"><button>Add employee</button></a>
+                    </td>
+                    <td>
+                        <a th:href="@{'/companies/' + ${company.id}} + '/update'"><button>Edit</button></a>
+                        <a th:href="@{'/companies/' + ${company.id} + '/delete'}"><button>Delete</button></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
